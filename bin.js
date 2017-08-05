@@ -6,6 +6,7 @@ var argv = minimist(process.argv.slice(2), {
   alias: {
     port: 'p',
     host: 'h',
+    origin: 'o',
     'max-broadcasts': 'm',
     key: 'k',
     cert: 'c',
@@ -32,7 +33,8 @@ function listen () {
     maxBroadcasts: max,
     key: argv.key && fs.readFileSync(argv.key),
     cert: argv.cert && fs.readFileSync(argv.cert),
-    host: argv.host
+    host: argv.host,
+    origin: argv.origin
   })
 
   if (!argv.quiet) {

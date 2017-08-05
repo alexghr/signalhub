@@ -20,6 +20,7 @@ module.exports = function (opts) {
   var channels = {}
   var maxBroadcasts = (opts && opts.maxBroadcasts) || Infinity
   var subs = 0
+  var origin = opts && opts.origin ? opts.origin : '*'
 
   var get = function (channel) {
     if (channels[channel]) return channels[channel]
@@ -30,7 +31,7 @@ module.exports = function (opts) {
   }
 
   var cors = corsify({
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
     'Access-Control-Allow-Headers': 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization'
   })
